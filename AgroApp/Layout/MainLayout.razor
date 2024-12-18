@@ -1,16 +1,16 @@
 ﻿@inherits LayoutComponentBase
-<div class="page">
-    <div class="sidebar">
-        <NavMenu />
-    </div>
 
-    <main>
-        <div class="top-row px-4">
-            <a href="https://learn.microsoft.com/aspnet/core/" target="_blank">About</a>
-        </div>
-
-        <article class="content px-4">
+<div>
+    <FluentMainLayout NavMenuTitle="Navigation menu">
+        <Header><h3>AgroApp</h3></Header>
+        <SubHeader><p>This is an innovative app that assists agricultural professionals in crop planning and controlling agricultural pests and diseases.</p></SubHeader>
+        <Body>
             @Body
-        </article>
-    </main>
+        </Body>
+        <NavMenuContent>
+            <FluentNavLink Href="/" Text="Home">Home</FluentNavLink>
+            <FluentNavLink Href="/crop" Text="Crop">Crop</FluentNavLink>
+            <FluentNavLink Href="/classify" Text="Defensivos">Defensivos</FluentNavLink>
+        </NavMenuContent>
+    </FluentMainLayout>
 </div>
