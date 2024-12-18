@@ -1,0 +1,42 @@
+﻿@page "/classify"
+
+@inject HttpClient client
+
+<PageTitle>Classify Pest</PageTitle>
+
+<div class="container mt-5">
+    <h1>Classify Pest</h1>
+    <div class="card-footer">
+        <div class="input-group">
+            <input @bind-value="url" type="text" class="form-control" placeholder="Enter url image pest..." />
+            <button class="btn btn-primary" @onclick="Request">Search</button>
+        </div>
+    </div>
+    <div class="mb-3">
+        <label for="respostaTextarea" class="form-label">Result:</label><br>
+        <textarea class="form-control" id="respostaTextarea" rows="4" @bind="pestClassification"></textarea>
+    </div>
+</div>
+@code {
+    private string url = string.Empty;
+    private ResultClassification? response;
+    private string pestClassification = string.Empty;
+
+    async void Request()
+    {
+        try
+        {
+            response = await (await client.PostAsJsonAsync("http://localhost:5080/classify_pest?url=" + url,
+            string.Empty)).Content.ReadFromJsonAsync<ResultClassification>();
+            pestClassification = response?.PestClassification ?? "not classified";
+            StateHasChanged();
+        }
+        catch (Exception ex)
+        {
+            throw;
+        }
+
+    }
+
+    record ResultClassification(string PestClassification, string Result, string Observation);
+}

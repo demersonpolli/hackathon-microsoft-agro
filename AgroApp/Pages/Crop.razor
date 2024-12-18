@@ -1,0 +1,69 @@
+﻿@page "/crop"
+@inject HttpClient Http
+
+<PageTitle>Crop Protection</PageTitle>
+
+<div class="container mt-5">
+    <h1>Crop Protection</h1>
+
+    <div class="card-footer">
+        <div class="input-group">
+            <input @bind-value="pest" type="text" class="form-control" placeholder="Enter the name of the pest..." />
+            <button class="btn btn-primary" @onclick="Request">Search</button>
+        </div>
+    </div>
+
+    @if (cropProtections == null || cropProtections.Length <= 0)
+    {
+        @* <p><em>Data not found</em></p> *@
+    }
+    else
+    {
+        <table class="table">
+            <thead>
+                <tr>
+                    <th aria-label="Comercial Brand">Comercial Brand</th>
+                    <th aria-label="Class">Class</th>
+                    <th aria-label="Crop">Crop</th>
+                    <th aria-label="Pest Scientific Name">Pest Scientific Name</th>
+                    <th aria-label="Pest Common Name">Pest Common Name</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var cropProtection in cropProtections)
+                {
+                    <tr>
+                        <td>@cropProtection.CommercialBrand</td>
+                        <td>@cropProtection.Class</td>
+                        <td>@cropProtection.Crop</td>
+                        <td>@cropProtection.PestScientificName</td>
+                        <td>@cropProtection.PestCommonName</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+</div>
+
+@code {
+    private CropProtection[]? cropProtections;
+    private string pest = string.Empty;
+
+    async void Request()
+    {
+        try
+        {
+            cropProtections = await
+            Http.GetFromJsonAsync<CropProtection[]>("http://localhost:5080/get_registered_products?pest=" + pest);
+            StateHasChanged();
+        }
+        catch (Exception ex)
+        {
+            throw;
+        }
+
+    }
+
+    record CropProtection(int Id, string RegistrationNumber, string CommercialBrand, string Class, string Crop, string
+    PestScientificName, string PestCommonName);
+}

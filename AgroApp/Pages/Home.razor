@@ -1,0 +1,41 @@
+﻿@page "/"
+
+@inject HttpClient client
+
+<PageTitle>Home</PageTitle>
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-12 col-md-12 mx-auto">
+            <!-- Caixa de mensagens -->
+            <div class="card">
+                <div class="card-header bg-light text-dark">
+                    <h4>AgroChat</h4>
+                </div>
+                <div class="card-body" style="height: 300px; overflow-y: scroll;">
+                    @result
+                </div>
+                <!-- Campo de input de mensagem -->
+                <div class="card-footer">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Digite sua mensagem..." />
+                        <button class="btn btn-primary" @onclick="Resquest">Enviar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+    string result = "";
+
+    async void Resquest()
+    {
+        result = await client.GetStringAsync("http://localhost:5080/get_registered_products?pest=Percevejo");
+        StateHasChanged();
+        // Enviando o POST para a API
+        // var response = await client.PostAsJsonAsync("http://localhost:5080/question?question=quais sao as boas praticas de manejo de soja", result);
+    }
+
+}
