@@ -50,7 +50,7 @@ jsonpointer==2.4
 jsonschema==4.20.0
 jsonschema-specifications==2023.11.1
 kubernetes==28.1.0
-langchain==0.0.341
+langchain==0.2.5
 langchain-core==0.0.6
 langsmith==0.0.67
 lazy_loader==0.3
