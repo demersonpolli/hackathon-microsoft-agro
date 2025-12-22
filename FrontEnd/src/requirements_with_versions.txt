@@ -10,4 +10,4 @@ PyYAML==6.0.1
 torch==2.8.0
 streamlit==1.37.0
 streamlit-mic-recorder==0.0.4
-transformers==4.35.2
+transformers==4.53.0
