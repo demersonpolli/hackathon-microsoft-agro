@@ -102,7 +102,7 @@ Pillow==10.1.0
 platformdirs==4.0.0
 pooch==1.8.0
 posthog==3.0.2
-protobuf==4.25.8
+protobuf==5.29.6
 pulsar-client==3.3.0
 py-cpuinfo==9.0.0
 pyarrow==14.0.1
