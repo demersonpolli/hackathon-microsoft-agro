@@ -35,7 +35,7 @@ google-auth==2.23.4
 googleapis-common-protos==1.61.0
 greenlet==3.0.1
 grpcio==1.59.3
-h11==0.14.0
+h11==0.16.0
 httptools==0.6.1
 huggingface-hub==0.19.4
 humanfriendly==10.0
