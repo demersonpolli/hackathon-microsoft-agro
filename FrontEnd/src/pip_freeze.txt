@@ -106,7 +106,7 @@ protobuf==5.29.6
 pulsar-client==3.3.0
 py-cpuinfo==9.0.0
 pyarrow==14.0.1
-pyasn1==0.5.1
+pyasn1==0.6.3
 pyasn1-modules==0.3.0
 pycparser==2.21
 pydantic==2.5.2
