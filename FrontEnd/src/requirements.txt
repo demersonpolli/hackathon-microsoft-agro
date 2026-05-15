@@ -2,7 +2,7 @@ azure-cognitiveservices-speech
 streamlit-mic-recorder
 sentence_transformers
 InstructorEmbedding
-langchain==0.2.5
+langchain==0.3.30
 llama-cpp-python
 ctransformers
 transformers
