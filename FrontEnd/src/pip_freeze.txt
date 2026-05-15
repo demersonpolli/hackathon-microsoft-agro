@@ -138,7 +138,7 @@ soundfile==0.12.1
 soxr==0.3.7
 SpeechRecognition==3.10.0
 SQLAlchemy==2.0.23
-starlette==0.27.0
+starlette==0.49.1
 streamlit==1.54.0
 streamlit-mic-recorder==0.0.4
 sympy==1.12
